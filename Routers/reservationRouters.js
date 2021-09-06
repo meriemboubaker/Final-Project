@@ -1,0 +1,10 @@
+const express = require('express')
+const authmiddleware = require('../middlewares/authmiddleware')
+const router = express.Router()
+const {getreservations} = require('../Controllers/reservationController')
+const {addreservations} = require('../Controllers/reservationAddController.js')
+const {getsalles} = require('../Controllers/getsallesController.js')
+router.get('/getreservations',authmiddleware,getreservations)
+router.post('/addreservations',authmiddleware,addreservations)
+router.get('/getsalles',authmiddleware,getsalles)
+module.exports = router

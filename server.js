@@ -1,0 +1,12 @@
+require('dotenv').config({path:'./config/.env'})
+const mongoose = require('mongoose')
+
+const express = require('express')
+const app = express()
+const reservationRoute = require('./Routers/reservationRouters')
+const userRoute = require('./Routers/userRouters')
+app.use(express.json())
+app.use('/reservation',reservationRoute)
+app.use('/user',userRoute)
+app.listen(process.env.PORT,(err=>err?console.error(err):console.log('server running on port '+process.env.PORT)))
+mongoose.connect(process.env.MONGO,(err)=>err?console.error(err):console.log('database connected'))
